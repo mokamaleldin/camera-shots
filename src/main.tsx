@@ -9,6 +9,14 @@ const theme = extendTheme({
     initialColorMode: "light",
     useSystemColorMode: false,
   },
+  styles: {
+    global: (props: { colorMode: string }) => ({
+      body: {
+        bg: props.colorMode === "dark" ? "gray.900" : "gray.50",
+        color: props.colorMode === "dark" ? "gray.100" : "gray.800",
+      },
+    }),
+  },
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

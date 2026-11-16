@@ -254,7 +254,7 @@ export default function PhotographyGraphic({
         fill="#f3f3f3"
       /> */}
 
-      <path d={viewPath} fill="#ccc" />
+      <path d={viewPath} fill="#e2e8f0" fillOpacity={0.7} />
 
       <path
         className="cls-1"
@@ -353,8 +353,8 @@ export default function PhotographyGraphic({
         y={0}
         width={farFocalPointInInches - nearFocalPointInInches}
         height={height}
-        fill="red"
-        fillOpacity={0.2}
+        fill="#0d9488"
+        fillOpacity={0.22}
       />
     </svg>
   );

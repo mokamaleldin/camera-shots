@@ -1,14 +1,14 @@
 {
-  "name": "depth-of-field-t1",
+  "name": "camera-shots",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
-  "description": "Interactive depth-of-field visualizer and calculator",
+  "description": "Interactive depth-of-field visualizer and optics calculator | محاكي وحاسبة عمق الميدان للبصريات والتصوير",
   "license": "MIT",
-  "author": "Jack Herrington",
+  "author": "Mohamed Kamaleldin (محمد كمال الدين)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jherr/depth-of-field.git"
+    "url": "https://github.com/mokamaleldin/camera-shots.git"
   },
   "scripts": {
     "dev": "vite",

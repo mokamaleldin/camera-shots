@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Slider,
   SliderTrack,
@@ -26,7 +26,7 @@ import {
   Checkbox,
 } from "@chakra-ui/react";
 import { TbRuler, TbAperture, TbZoomIn, TbUser } from "react-icons/tb";
-import { FiGithub, FiCamera, FiSun, FiMoon } from "react-icons/fi";
+import { FiCamera, FiSun, FiMoon } from "react-icons/fi";
 import { toImperial, toMetric } from "./utils/units";
 import { buildNativeSelectStyles } from "./selectStyles";
 import { BRANDS, CAMERAS, lensesForCamera, maxApertureAt, logProfilesFor } from "./gear";
@@ -212,7 +212,13 @@ const [customSensorHeight, setCustomSensorHeight] = useState(24);
     setLangState(l);
     saveLang(l);
     document.documentElement.lang = l;
+    document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
   };
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  }, [lang]);
   const sensorName = (k: string) => t.sensors[k] ?? k;
 
   const [cameraId, setCameraId] = useState("");
@@ -634,7 +640,7 @@ const cropFactor = isCustomSensor
               >
                 <Stack direction="row">
                   {SYSTEMS.map((s) => (
-                    <Radio value={s} key={s} colorScheme="blue">
+                    <Radio value={s} key={s} colorScheme="teal">
                       {t[s]}
                     </Radio>
                   ))}
@@ -715,7 +721,7 @@ const cropFactor = isCustomSensor
           </Flex>
           {lens && (
             <Flex mt={2} justify="flex-start" pl={{ base: "80px", md: "calc(10% + 8px)" }}>
-              <Badge colorScheme="blue" variant="subtle" px={2} py={0.5} fontSize="xs" rounded="md" textTransform="none">
+              <Badge colorScheme="teal" variant="subtle" px={2} py={0.5} fontSize="xs" rounded="md" textTransform="none">
                 {lens.maker} · {isPrime ? `${lens.minFocal} mm` : `${lens.minFocal}–${lens.maxFocal} mm`} ·{" "}
                 {lens.apertureWide === lens.apertureTele ? `f/${lens.apertureWide}` : `f/${lens.apertureWide}–${lens.apertureTele}`}
                 {camera ? ` · ${camera.brand} ${camera.model}` : ""}
@@ -741,7 +747,7 @@ const cropFactor = isCustomSensor
             <Box flexGrow={1}>
               <Slider
                 aria-label="distance to subject"
-                colorScheme="blue"
+                colorScheme="teal"
                 value={distanceToSubjectInInches}
                 onChange={(val: number) => setDistanceToSubjectInInches(val)}
                 min={10}
@@ -779,7 +785,7 @@ const cropFactor = isCustomSensor
             <Box flexGrow={1}>
               <Slider
                 aria-label="focal length"
-                colorScheme="blue"
+                colorScheme="teal"
                 value={focalLengthInMillimeters}
                 onChange={(val: number) => changeFocal(val)}
                 min={focalMin}
@@ -835,7 +841,7 @@ const cropFactor = isCustomSensor
             <Box flexGrow={1}>
               <Slider
                 aria-label="aperture"
-                colorScheme="blue"
+                colorScheme="teal"
                 value={aperture}
                 onChange={(val: number) => setAperture(val)}
                 isDisabled={!!lens?.fixedAperture}
@@ -1005,7 +1011,7 @@ const cropFactor = isCustomSensor
                 <Button
                   size="sm"
                   variant="outline"
-                  colorScheme="blue"
+                  colorScheme="teal"
                   onClick={() => {
                     setFocalLengthInMillimeters(setup.focalLength);
                     setAperture(setup.aperture);
@@ -1021,21 +1027,13 @@ const cropFactor = isCustomSensor
           </Wrap>
         </Box>
 
-        {/* GitHub Footer */}
-        <Box pt={2} pb={6} textAlign="center">
-          <Button
-            as="a"
-            href="https://github.com/jherr/depth-of-field"
-            target="_blank"
-            rel="noreferrer"
-            size="sm"
-            variant="ghost"
-            leftIcon={<Icon as={FiGithub} />}
-            color={mutedText}
-            _hover={{ color: colorMode === "dark" ? "gray.200" : "gray.800" }}
-          >
-            {t.github}
-          </Button>
+        {/* Footer */}
+        <Box pt={4} pb={6} textAlign="center">
+          <Text fontSize="xs" color={mutedText}>
+            {lang === "ar"
+              ? "تم التطوير والتخصيص بواسطة محمد كمال الدين"
+              : "Developed & Customized by Mohamed Kamaleldin"}
+          </Text>
         </Box>
       </Box>
       </Box>
