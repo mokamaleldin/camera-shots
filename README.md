@@ -1,106 +1,163 @@
-# محاكي وحاسبة عمق الميدان | Depth Of Field Simulator
+# Camera Shots - Interactive Depth of Field & Optics Simulator
 
-تطبيق ويب تفاعلي واحترافي لمحاكاة وحساب عمق الميدان (Depth of Field - DoF) وبصريات الكاميرات والعدسات في التصوير الفوتوغرافي والفيديو.
+An interactive, high-precision web application designed for photographers and cinematographers to simulate, visualize, and calculate depth of field (DoF), hyperfocal distances, and camera exposure in real time.
 
-Developed by **Mohamed Kamaleldin (محمد كمال الدين)**.
-
----
-
-## 🌟 المميزات الرئيسية (Features)
-
-- **محاكاة تفاعلية حية (Interactive Live Diagram):** رسم بصري فوري يوضح زاوية الرؤية، مخروط التركيز، ومنطقة عمق الميدان الحادة مع إمكانية سحب الهدف بالفأرة أو اللمس.
-- **دعم كامل للغة العربية (Full Arabic Support):** واجهة مخصصة باللغة العربية مع دعم اتجاه النص من اليمين لليسار (RTL) بالإضافة إلى 12 لغة أخرى.
-- **حسابات بصرية دقيقة:**
-  - نقطة التركيز القريبة (Near Focus) والبعيدة (Far Focus).
-  - عمق الميدان الكلي (Total DoF).
-  - المسافة الهايبرفوكالية (Hyperfocal Distance) مع زر ضبط فوري للتركيز الأقصى.
-  - تنبيه حيود الضوء (Diffraction Warning) عند تضييق فتحة العدسة بما يقلل من حدة الصورة.
-- **أحجام مستشعرات متعددة (Sensors):**
-  - كاميرات الهواتف، كاميرات الويب، ميكرو 4/3، APS-C، وإطار كامل 35 مم، ومتوسط 6×6 و 6×7.
-  - خيار مستشعر مخصص (Custom Sensor) بإدخال العرض والارتفاع يدوياً مع حساب معامل الاقتصاص (Crop Factor).
-- **محاكاة الإضاءة والتعريض (Lighting & Exposure Simulation):**
-  - أوضاع تصوير فوتوغرافي وفيديو مع دعم قاعدة زاوية الغالق 180 درجة.
-  - محاكاة الفلاتر: فلتر الكثافة المحايدة (ND)، والفلتر المستقطب (CPL)، وفلتر UV.
-  - ملفات ألوان احترافية (Log & Rec.709) وتوازن البياض (White Balance).
-- **تصميم هادئ وعصري (Refined Minimal UI):** لوحة ألوان مريحة للعين تدعم الوضع الفاتح والوضع الداكن.
-- **خيارات سريعة (Quick Presets):** إعدادات شائعة جاهزة للبورتريه، الماكرو، الشارع، المناسبات، والمناظر الطبيعية.
+Developed by **Mohamed Kamaleldin** ([@mokamaleldin](https://github.com/mokamaleldin)).
 
 ---
 
-## 🚀 البدء والتشغيل (Getting Started)
+## 📸 Key Features
 
-### المتطلبات المسبقة (Prerequisites)
-- [Node.js](https://nodejs.org/) الإصدار 18 أو أحدث
-- مدير الحزم npm (أو yarn / pnpm)
+- **Interactive Scene Diagram:** Real-time visual representation of the camera's field of view (FoV), focus cone, and sharp depth-of-field zone with a draggable subject.
+- **Multilingual Support (13 Languages):** Full support for English, Arabic (with native right-to-left RTL layout), German, Spanish, French, Turkish, Russian, Japanese, Chinese, Korean, and more.
+- **Accurate Optical Calculations:**
+  - Near focus limit, far focus limit, and total depth of field.
+  - Hyperfocal distance calculation with a one-click **Set Hyperfocal** button to maximize sharpness.
+  - Diffraction warning flag when stopping down past the sensor's diffraction limit.
+  - 35mm-equivalent focal length calculation for cropped sensors.
+- **Comprehensive Sensor Profiles:**
+  - Presets ranging from smartphone sensors and webcams to Micro Four Thirds, APS-C, 35mm Full Frame, and Medium Format (6×6 and 6×7).
+  - **Custom Sensor** option allowing exact width and height specification with automated crop factor and Circle of Confusion (CoC) derivation.
+- **Gear Catalog & Presets:**
+  - Real-world camera and lens combinations (Sony, Canon, Nikon, Fujifilm, Leica, etc.).
+  - Quick presets for common setups (Macro, Portrait, Street, Event, Landscape).
+- **Lighting & Exposure Engine:**
+  - Realistic EV light levels across scenarios (Midday sun, Golden hour, Blue hour, Overcast, Night, Event halls).
+  - Exposure controls for shutter speed, aperture, and Auto ISO limits.
+  - Video shooting mode with the 180° shutter rule and mains frequency flicker detection (50 Hz / 60 Hz).
+  - Lens filters simulation including Variable ND (VND), Circular Polarizer (CPL), and UV filters.
+  - Picture profiles: Standard Rec.709 and Log curves with ETTR guidance.
+- **Refined, Modern Aesthetic:** Clean, subtle color palette with full light mode and dark mode support.
 
-### التثبيت والتشغيل المحلي (Installation & Run)
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) version 18 or newer
+- npm, yarn, or pnpm
+
+### Installation
+
+Clone the repository and install dependencies:
+
 ```bash
-# تثبيت الاعتماديات
+git clone https://github.com/mokamaleldin/camera-shots.git
+cd camera-shots
 npm install
+```
 
-# تشغيل خادم التطوير المحلي
+### Running Locally
+
+Start the Vite development server with hot-module replacement:
+
+```bash
 npm run dev
 ```
 
-سيتم تشغيل التطبيق محلياً على الرابط: `http://localhost:5173`.
+Open `http://localhost:5173` in your browser.
 
-### البناء للإنتاج (Production Build)
+### Production Build
+
+Type-check and create an optimized production build:
+
 ```bash
 npm run build
 ```
-تُحفظ الملفات الجاهزة للنشر داخل المجلد `dist/`.
+
+To preview the generated build:
+
+```bash
+npm run preview
+```
+
+### Available Scripts
+
+| Command | Purpose |
+| :--- | :--- |
+| `npm run dev` | Starts the Vite local development server |
+| `npm run build` | Compiles TypeScript and builds production assets to `dist/` |
+| `npm run preview` | Locally serves the production build |
+| `npm run lint` | Runs ESLint to verify code quality |
+| `npm test` | Executes unit tests via `tsx --test` |
 
 ---
 
-## 📐 كيف تُحسب المعادلات البصرية؟ (How Values Are Calculated)
+## 📐 How the Optics are Calculated
 
-تعتمد الحسابات على أربعة مدخلات رئيسية:
-1. **البعد البؤري** للعدسة ($f$ بوحدة مم).
-2. **فتحة العدسة** ($N$ أو الرقم البؤري f-number).
-3. **المسافة إلى الهدف** ($s$ بوحدة مم أو بوصة).
-4. **دائرة الارتباك** (Circle of Confusion - $CoC$) المشتقة من قطر المستشعر.
+All calculations follow thin-lens optical formulas based on four key inputs: **focal length** ($f$ in mm), **aperture** ($N$, f-number), **subject distance** ($s$ in mm), and the **Circle of Confusion** ($CoC$ in mm) derived from the camera sensor.
 
-### 1. دائرة الارتباك (Circle of Confusion - CoC)
-تُحسب للمستشعر المخصص وفق قاعدة القطر الشائعة:
+### 1. Circle of Confusion (CoC) & Crop Factor
+
+The Circle of Confusion defines the largest blur spot perceived as acceptably sharp. For preset sensors, standard industry constants are utilized (e.g., 0.029 mm for 35mm full frame, 0.019 mm for APS-C).
+
+For a **Custom Sensor**, the CoC is estimated from the sensor diagonal using the standard $\frac{\text{diagonal}}{1500}$ rule of thumb:
+
 $$\text{CoC} = \frac{\sqrt{\text{width}^2 + \text{height}^2}}{1500}$$
 
-### 2. المسافة الهايبرفوكالية (Hyperfocal Distance - H)
-هي مسافة التركيز التي تجعل كل شيء من نصفها وحتى ما لا نهاية حاداً ومقبولاً:
+The crop factor is calculated relative to a standard 35mm full-frame diagonal ($\approx 43.27\text{ mm}$):
+
+$$\text{Crop Factor} = \frac{43.27}{\sqrt{\text{width}^2 + \text{height}^2}}$$
+
+### 2. Hyperfocal Distance ($H$)
+
+The hyperfocal distance is the focus point that yields acceptable sharpness from half that distance all the way to infinity:
+
 $$H = f + \frac{f^2}{N \times \text{CoC}}$$
 
-### 3. حدود عمق الميدان (Near & Far Focus Limits)
-$$\text{Near} = \frac{H \times s}{H + (s - f)}$$
-$$\text{Far} = \frac{H \times s}{H - (s - f)}$$
+### 3. Depth of Field Limits
 
-- **عمق الميدان الكلي (Total DoF):** $\text{Total DoF} = \text{Far} - \text{Near}$.
-- عند تجاوز المسافة الهايبرفوكالية، تصبح النقطة البعيدة ما لا نهاية ($\infty$).
+Given subject distance $s$, focal length $f$, and hyperfocal distance $H$:
+
+$$\text{Near Limit} = \frac{H \times s}{H + (s - f)}$$
+
+$$\text{Far Limit} = \frac{H \times s}{H - (s - f)}$$
+
+- **Total Depth of Field:** $\text{Total DoF} = \text{Far Limit} - \text{Near Limit}$.
+- If the subject distance equals or exceeds the hyperfocal distance ($s \ge H$), the far limit extends to **infinity ($\infty$)**.
+
+### 4. Diffraction Limit
+
+Stopping down too far causes optical diffraction as the Airy disk diameter ($0.001342 \times N\text{ mm}$) surpasses the circle of confusion. The threshold aperture is calculated as:
+
+$$N_{\text{diffraction}} = \frac{\text{CoC}}{0.001342}$$
+
+When the selected f-number exceeds this value, a warning is displayed.
 
 ---
 
-## 🗂️ هيكل المشروع (Project Structure)
+## 📁 Project Structure
 
 ```text
-src/
-├── App.tsx                # المكون الرئيسي، ربط الحالة، والمعادلات البصرية
-├── PhotographyGraphic.tsx # الرسم البصري التفاعلي للمشهد وزاوية الرؤية
-├── MonitorView.tsx        # محاكاة ما تراه على شاشة الكاميرا
-├── i18n.ts                # دعم اللغات المتعددة بما فيها اللغة العربية (ar)
-├── lighting.ts            # حسابات الإضاءة، التعريض، وقيم EV
-├── gear.ts                # مواصفات الكاميرات والعدسات
-├── selectStyles.ts        # تنسيقات القوائم المنسدلة للوضعين الداكن والفاتح
-└── utils/units.ts         # التحويل بين النظام المتري والإمبراطوري
+camera-shots/
+├── public/                 # Static assets
+├── src/
+│   ├── App.tsx             # Main application component, state, and optical calculations
+│   ├── PhotographyGraphic.tsx # Interactive SVG camera cone & DoF scene visualizer
+│   ├── MonitorView.tsx     # Simulated camera monitor preview
+│   ├── gear.ts             # Camera mounts, bodies, lenses, and optical specifications
+│   ├── lighting.ts         # Photometric calculations, EV scenes, and exposure math
+│   ├── i18n.ts             # Internationalization dictionaries (including Arabic & RTL)
+│   ├── selectStyles.ts     # Dark/light styling for native select dropdowns
+│   ├── main.tsx            # Application entrypoint and Chakra UI theme config
+│   └── utils/
+│       └── units.ts        # Metric and Imperial distance conversion utilities
+├── index.html              # HTML template with dynamic language/direction initialization
+├── package.json            # Project dependencies and metadata
+└── tsconfig.json           # TypeScript configuration
 ```
 
 ---
 
-## 👨‍💻 المطور (Author)
+## 👨‍💻 Author
 
-تم التطوير والتخصيص بواسطة:
-**محمد كمال الدين (Mohamed Kamaleldin)**
-- مستودع المشروع على GitHub: [https://github.com/mokamaleldin/camera-shots](https://github.com/mokamaleldin/camera-shots)
+Created and customized by **Mohamed Kamaleldin** ([@mokamaleldin](https://github.com/mokamaleldin)).
+
+- GitHub Repository: [https://github.com/mokamaleldin/camera-shots](https://github.com/mokamaleldin/camera-shots)
 
 ---
 
-## 📄 الترخيص (License)
+## 📄 License
 
-هذا المشروع مرخص بموجب رخصة [MIT License](./LICENSE.txt).
+This project is open-source and released under the [MIT License](./LICENSE.txt).
