@@ -26,7 +26,7 @@ async function getOpenPort() {
 }
 
 async function startVite(port: number) {
-  const appUrl = `http://127.0.0.1:${port}/depth-of-field/`;
+  const appUrl = `http://127.0.0.1:${port}/`;
   const server = spawn(
     process.execPath,
     [VITE_BIN, "--host", "127.0.0.1", "--port", String(port), "--strictPort"],
